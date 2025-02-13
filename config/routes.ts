@@ -1,4 +1,6 @@
-﻿/**
+﻿import component from '@/locales/bn-BD/component';
+
+/**
  * @name umi 的路由配置
  * @description 只支持 path,component,routes,redirect,wrappers,name,icon 的配置
  * @param path  path 只支持两种占位符配置，第一种是动态参数 :id 的形式，第二种是 * 通配符，通配符只能出现路由字符串的最后。
@@ -29,6 +31,42 @@ export default [
     component: './Welcome',
   },
   {
+    path: '/selection',
+    name: '学生选课',
+    access: 'canStudent',
+    component: './Students/SelectCourse',
+  },
+  {
+    path: '/cancel',
+    name: '学生退选',
+    access: 'canStudent',
+    component: './Students/DeleteCourse',
+  },
+  {
+    path: '/rank',
+    name: '选课排名',
+    access: 'canStudent',
+    component: './Students/CourseRanking',
+  },
+  {
+    path: '/creditstatus',
+    name: '学分完成情况',
+    access: 'canStudent',
+    component: './Students/CreditStatus',
+  },
+  {
+    path: '/apply',
+    name: '开课申请',
+    access: 'canTeacher',
+    component: './Teachers/Apply',
+  },
+  {
+    path: '/marking',
+    name: '成绩登录与学生查询',
+    access: 'canTeacher',
+    component: './Teachers/Marking',
+  },
+  {
     path: '/admin',
     name: 'admin',
     icon: 'crown',
@@ -36,12 +74,30 @@ export default [
     routes: [
       {
         path: '/admin',
-        redirect: '/admin/sub-page',
+        redirect: '/admin/approval',
       },
       {
-        path: '/admin/sub-page',
-        name: 'sub-page',
-        component: './Admin',
+        path: '/admin',
+        redirect: '/admin/modify',
+      },
+      {
+        path: '/admin',
+        redirect: '/admin/register',
+      },
+      {
+        path: '/admin/approval',
+        name: '开课申请审核',
+        component: './Admin/Approval',
+      },
+      {
+        path: '/admin/modify',
+        name: '课程信息修改',
+        component: './Admin/Modify',
+      },
+      {
+        path: '/admin/register',
+        name: '用户注册',
+        component: './Admin/Register',
       },
     ],
   },
