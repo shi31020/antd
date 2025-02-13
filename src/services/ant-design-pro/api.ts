@@ -64,10 +64,10 @@ export async function rule(
 export async function updateRule(options?: { [key: string]: any }) {
   return request<API.RuleListItem>('/api/rule', {
     method: 'POST',
-    data:{
+    data: {
       method: 'update',
       ...(options || {}),
-    }
+    },
   });
 }
 
@@ -75,10 +75,10 @@ export async function updateRule(options?: { [key: string]: any }) {
 export async function addRule(options?: { [key: string]: any }) {
   return request<API.RuleListItem>('/api/rule', {
     method: 'POST',
-    data:{
+    data: {
       method: 'post',
       ...(options || {}),
-    }
+    },
   });
 }
 
@@ -86,9 +86,40 @@ export async function addRule(options?: { [key: string]: any }) {
 export async function removeRule(options?: { [key: string]: any }) {
   return request<Record<string, any>>('/api/rule', {
     method: 'POST',
-    data:{
+    data: {
       method: 'delete',
       ...(options || {}),
-    }
+    },
   });
+}
+
+// 向后端发送注册表单
+export async function register(data: API.RegisterData) {
+  return request<{
+    status: number;
+    message: string;
+  }>('http://localhost:5000/api/register', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data,
+  });
+}
+
+/** 获取院系列表 */
+export async function fetchDepartments(): Promise<string[]> {
+  try {
+    const response = await request<{
+      success: boolean;
+      data: string[];
+    }>('/api/departments', {
+      method: 'GET',
+    });
+
+    return response.success ? response.data : [];
+  } catch (error) {
+    console.error('获取院系列表失败', error);
+    return [];
+  }
 }

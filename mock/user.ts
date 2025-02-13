@@ -47,7 +47,7 @@ export default {
         name: 'Serati Ma',
         avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
         userid: '00000001',
-        access: ['admin', 'student'],
+        access: ['admin', 'student', 'teacher'],
       },
     });
   },
