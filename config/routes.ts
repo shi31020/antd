@@ -108,6 +108,11 @@ export default [
     component: './TableList',
   },
   {
+    name: '课程查询',
+    path: '/',
+    component: './Query',
+  },
+  {
     path: '/',
     redirect: '/welcome',
   },

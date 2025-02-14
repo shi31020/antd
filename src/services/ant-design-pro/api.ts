@@ -14,7 +14,7 @@ export async function currentUser(options?: { [key: string]: any }) {
 
 /** 退出登录接口 POST /api/login/outLogin */
 export async function outLogin(options?: { [key: string]: any }) {
-  return request<Record<string, any>>('/api/login/outLogin', {
+  return request<Record<string, any>>('http://localhost:5000/api/login/outLogin', {
     method: 'POST',
     ...(options || {}),
   });
@@ -22,7 +22,7 @@ export async function outLogin(options?: { [key: string]: any }) {
 
 /** 登录接口 POST /api/login/account */
 export async function login(body: API.LoginParams, options?: { [key: string]: any }) {
-  return request<API.LoginResult>('/api/login/account', {
+  return request<API.LoginResult>('http://localhost:5000/api/login/account', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -107,19 +107,9 @@ export async function register(data: API.RegisterData) {
   });
 }
 
-/** 获取院系列表 */
-export async function fetchDepartments(): Promise<string[]> {
-  try {
-    const response = await request<{
-      success: boolean;
-      data: string[];
-    }>('/api/departments', {
-      method: 'GET',
-    });
-
-    return response.success ? response.data : [];
-  } catch (error) {
-    console.error('获取院系列表失败', error);
-    return [];
-  }
+export async function queryClasses(params: API.ClassQuery) {
+  return request<API.ClassQuery[]>('http://localhost:5000/api/query_classes', {
+    method: 'POST',
+    data: params,
+  });
 }
