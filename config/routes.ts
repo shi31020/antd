@@ -25,10 +25,9 @@ export default [
     ],
   },
   {
-    path: '/welcome',
-    name: 'welcome',
-    icon: 'smile',
-    component: './Welcome',
+    name: '课程查询',
+    path: '/',
+    component: './Query',
   },
   {
     path: '/selection',
@@ -56,7 +55,7 @@ export default [
   },
   {
     path: '/apply',
-    name: '开课申请',
+    name: '开课申请与取消',
     access: 'canTeacher',
     component: './Teachers/Apply',
   },
@@ -106,15 +105,6 @@ export default [
     icon: 'table',
     path: '/list',
     component: './TableList',
-  },
-  {
-    name: '课程查询',
-    path: '/',
-    component: './Query',
-  },
-  {
-    path: '/',
-    redirect: '/welcome',
   },
   {
     path: '*',

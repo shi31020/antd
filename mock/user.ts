@@ -45,7 +45,6 @@ export default {
       success: true,
       data: {
         name: 'Serati Ma',
-        avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
         userid: '00000001',
         access: ['admin', 'student', 'teacher'],
       },
@@ -113,9 +112,6 @@ export default {
   'POST /api/login/outLogin': (req: Request, res: Response) => {
     access = '';
     res.send({ data: {}, success: true });
-  },
-  'POST /api/register': (req: Request, res: Response) => {
-    res.send({ status: 'ok', currentAuthority: 'user', success: true });
   },
   'GET /api/500': (req: Request, res: Response) => {
     res.status(500).send({

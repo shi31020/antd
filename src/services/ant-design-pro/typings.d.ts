@@ -1,11 +1,7 @@
 declare namespace API {
   type CurrentUser = {
     name?: string;
-    avatar?: string;
     userid?: string;
-    signature?: string;
-    title?: string;
-    group?: string;
     access?: string[];
   };
 
