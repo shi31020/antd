@@ -115,3 +115,24 @@ export async function queryClasses(params: API.ClassQuery) {
     withCredentials: true,  // 确保请求包含凭证信息（如 cookies）
   });
 }
+
+export async function fetchAwaitingApprovalClasses() {
+  return request('/api/approveAwait', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    withCredentials: true,
+  });
+}
+
+export async function approveCourse(courseId: number) {
+  return request('/api/Approval', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: { ID: courseId },
+    withCredentials: true,
+  });
+}

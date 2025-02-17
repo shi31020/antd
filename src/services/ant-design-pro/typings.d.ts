@@ -119,4 +119,22 @@ declare namespace API {
     TimeSlot?: string; // 上课时间（可选）
     Capacity?: number; // 容量（可选）
   };
+
+  type ClassData =  {
+    ID: number;
+    CID: string;
+    TID: string;
+    TimeSlot: string | null;
+    Capacity: number | null;
+    name: string; // 课程名称
+    teacherName: string; // 教师名称
+    gpa: number; // 绩点
+  }
+
+  type ApproveAwaitResponse =  {
+    success: boolean;
+    data: ClassData[];
+  }
+
+
 }
