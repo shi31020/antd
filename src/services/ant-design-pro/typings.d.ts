@@ -25,16 +25,19 @@ declare namespace API {
   };
 
   type LoginParams = {
-    username?: string;
+    id?: string;
     password?: string;
     autoLogin?: boolean;
     type?: string;
   };
 
   type LoginResult = {
-    status?: string;
-    type?: string;
-    currentAuthority?: string;
+    success?: boolean;
+    message?: string;
+    data?: {
+      id?: string;
+      access?: string[];
+    };
   };
 
   type NoticeIconItem = {

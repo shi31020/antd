@@ -8,6 +8,7 @@ export async function currentUser(options?: { [key: string]: any }) {
     data: API.CurrentUser;
   }>('/api/currentUser', {
     method: 'GET',
+    withCredentials: true,  // 确保请求包含凭证信息（如 cookies）
     ...(options || {}),
   });
 }
@@ -16,6 +17,7 @@ export async function currentUser(options?: { [key: string]: any }) {
 export async function outLogin(options?: { [key: string]: any }) {
   return request<Record<string, any>>('/api/login/outLogin', {
     method: 'POST',
+    withCredentials: true,  // 确保请求包含凭证信息（如 cookies）
     ...(options || {}),
   });
 }
@@ -28,6 +30,7 @@ export async function login(body: API.LoginParams, options?: { [key: string]: an
       'Content-Type': 'application/json',
     },
     data: body,
+    withCredentials: true,  // 确保请求包含凭证信息（如 cookies）
     ...(options || {}),
   });
 }
@@ -48,6 +51,7 @@ export async function rule(
     params: {
       ...params,
     },
+    withCredentials: true,  // 确保请求包含凭证信息（如 cookies）
     ...(options || {}),
   });
 }
@@ -60,6 +64,7 @@ export async function updateRule(options?: { [key: string]: any }) {
       method: 'update',
       ...(options || {}),
     },
+    withCredentials: true,  // 确保请求包含凭证信息（如 cookies）
   });
 }
 
@@ -71,6 +76,7 @@ export async function addRule(options?: { [key: string]: any }) {
       method: 'post',
       ...(options || {}),
     },
+    withCredentials: true,  // 确保请求包含凭证信息（如 cookies）
   });
 }
 
@@ -82,6 +88,7 @@ export async function removeRule(options?: { [key: string]: any }) {
       method: 'delete',
       ...(options || {}),
     },
+    withCredentials: true,  // 确保请求包含凭证信息（如 cookies）
   });
 }
 
@@ -96,6 +103,7 @@ export async function register(data: API.RegisterData) {
       'Content-Type': 'application/json',
     },
     data,
+    withCredentials: true,  // 确保请求包含凭证信息（如 cookies）
   });
 }
 
@@ -104,5 +112,6 @@ export async function queryClasses(params: API.ClassQuery) {
   return request<API.ClassQuery[]>('/api/query_classes', {
     method: 'POST',
     data: params,
+    withCredentials: true,  // 确保请求包含凭证信息（如 cookies）
   });
 }
