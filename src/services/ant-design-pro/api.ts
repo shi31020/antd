@@ -165,7 +165,7 @@ export async function fetchMyCourses() {
   return request<{
     success: boolean;
     data: API.CourseData[];
-  }>('/api/myClasses', {
+  }>('/api/myCourses', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -240,13 +240,13 @@ export async function queryStudents(cid: string) {
 }
 
 /** 更新学生成绩 POST /api/updateGrades */
-export async function updateGrades(SNO: string) {
+export async function updateGrades(data: API.Student[]) {
   return request<API.gradeUpdateRes>('/api/updateGrades', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    SNO,
+    data,
     withCredentials: true,
   });
 }
@@ -262,6 +262,32 @@ export async function deleteClass(ID: number) {
   return request('/api/deleteClass', {
     method: 'POST',
     data: { ID },
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    withCredentials: true,
+  });
+}
+
+export async function fetchCourseRanking() {
+  return request<{
+    success: boolean;
+    data: API.CourseRanking[];
+  }>('/api/selectRanking', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    withCredentials: true,
+  });
+}
+
+export async function checkScheme() {
+  return request<{
+    success: boolean;
+    data: API.CreditStatus[];
+  }>('/api/checkCredits', {
+    method: 'GET',
     headers: {
       'Content-Type': 'application/json',
     },

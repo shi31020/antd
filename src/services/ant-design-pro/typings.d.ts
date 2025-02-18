@@ -161,6 +161,8 @@ declare namespace API {
   };
 
   type Student = {
+    FinalGrade: string | number | readonly string[] | undefined;
+    RegularGrade: string | number | readonly string[] | undefined;
     SNO: string;
     SName: string;
     Gender: string;
@@ -173,5 +175,20 @@ declare namespace API {
     success: boolean;
     message: string;
     data: Student[];
+  };
+
+  type CourseRanking = {
+    CID: string;
+    CourseName: string;
+    TID: string;
+    TName: string;
+    StudentCount: number;
+  };
+
+  type CreditStatus = {
+    CID: string;
+    CourseName: string;
+    IsCompleted: boolean;
+    GRADE: number | null;
   };
 }
