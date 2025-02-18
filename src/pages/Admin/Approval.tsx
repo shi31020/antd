@@ -78,7 +78,7 @@ const Approval: React.FC = () => {
           data: data.map((row: any) => ({
             ID: row.ID,
             CID: row.CID,
-            CName: row.name,
+            CName: row.CName,
             TID: row.TID,
             TName: row.TName,
             TimeSlot: row.TimeSlot,

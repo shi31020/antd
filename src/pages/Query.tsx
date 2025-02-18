@@ -22,34 +22,36 @@ const Query: React.FC = () => {
 
   return (
     <div>
-      {/* 查询表单 */}
-      <QueryFilter onFinish={handleQuery} collapsed={false} defaultColsNumber={9}>
-        <ProFormText name="CID" label="课程号" />
-        <ProFormText name="CName" label="课程名称" />
-        <ProFormText name="TID" label="教师号" />
-        <ProFormText name="TName" label="教师名称" />
-        <ProFormText name="TimeSlot" label="上课时间" />
-        <ProFormDigit name="Capacity" label="班级容量" min={1} />
-      </QueryFilter>
+          {/* 查询表单 */}
+          <QueryFilter onFinish={handleQuery} collapsed={false} defaultColsNumber={9}>
+            <ProFormText name="CID" label="课程号" />
+            <ProFormText name="CName" label="课程名称" />
+            <ProFormText name="TID" label="教师号" />
+            <ProFormText name="TName" label="教师名称" />
+            <ProFormText name="TimeSlot" label="上课时间" />
+            <ProFormDigit name="Capacity" label="班级容量" min={1} />
+          </QueryFilter>
 
-      {/* 课程数据表 */}
-      <ProTable<API.ClassQuery>
-        columns={[
-          { title: '课程号', dataIndex: 'CID', key: 'CID' },
-          { title: '教师号', dataIndex: 'TID', key: 'TID' },
-          { title: '上课时间', dataIndex: 'TimeSlot', key: 'TimeSlot' },
-          { title: '容量', dataIndex: 'Capacity', key: 'Capacity' },
-        ]}
-        dataSource={dataSource}
-        rowKey={(record) => `${record.CID}-${record.TID}`}
-        loading={loading}
-        pagination={{
-          ...pagination,
-          onChange: (page, pageSize) => setPagination({ ...pagination, current: page, pageSize }),
-        }}
-        search={false} // 禁用 ProTable 默认查询表单
-      />
-    </div>
+          {/* 课程数据表 */}
+          <ProTable<API.ClassQuery>
+            columns={[
+              { title: '课程号', dataIndex: 'CID', key: 'CID' },
+              { title: '课程名称', dataIndex: 'CName', key: 'CName' },
+              { title: '教师号', dataIndex: 'TID', key: 'TID' },
+              { title: '教师名称', dataIndex: 'TName', key: 'TName' },
+              { title: '上课时间', dataIndex: 'TimeSlot', key: 'TimeSlot' },
+              { title: '容量', dataIndex: 'Capacity', key: 'Capacity' },
+            ]}
+            dataSource={dataSource}
+            rowKey={(record) => `${record.CID}-${record.TID}`}
+            loading={loading}
+            pagination={{
+              ...pagination,
+              onChange: (page, pageSize) => setPagination({ ...pagination, current: page, pageSize }),
+            }}
+            search={false} // 禁用 ProTable 默认查询表单
+          />
+        </div>
   );
 };
 

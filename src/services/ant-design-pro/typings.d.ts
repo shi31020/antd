@@ -95,8 +95,11 @@ declare namespace API {
   };
 
   type ClassQuery = {
+    ID?: string;
     CID?: string; // 课程号（可选）
+    CName?: string;
     TID?: string; // 教师号（可选）
+    TName?: string;
     TimeSlot?: string; // 上课时间（可选）
     Capacity?: number; // 容量（可选）
   };

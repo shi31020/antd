@@ -250,3 +250,10 @@ export async function updateGrades(SNO: string) {
     withCredentials: true,
   });
 }
+
+export async function selectCourse(params: { CID: string, ID:string }) {
+  return request('/api/select_course', {
+    method: 'POST',
+    data: params,
+  });
+}
