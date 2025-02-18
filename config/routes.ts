@@ -54,10 +54,10 @@ export default [
     component: './Students/CreditStatus',
   },
   {
-    path: '/apply',
-    name: '开课申请与取消',
+    path: '/management',
+    name: '课程管理',
     access: 'canTeacher',
-    component: './Teachers/Apply',
+    component: './Teachers/CourseManagement',
   },
   {
     path: '/marking',

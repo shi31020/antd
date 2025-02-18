@@ -136,3 +136,72 @@ export async function approveCourse(courseId: number) {
     withCredentials: true,
   });
 }
+
+export async function getCourseInfo(courseNumber: string) {
+  return request<{
+    success: boolean;
+    data: API.CourseInfo;
+  }>(`/api/course/info?courseNumber=${courseNumber}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    withCredentials: true,
+  });
+}
+
+export async function submitCourseApplication(data: API.CourseApplication) {
+  return request<API.CourseApplication>('/api/course/apply', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data,
+    withCredentials: true,
+  });
+}
+
+export async function fetchMyCourses() {
+  return request<{
+    success: boolean;
+    data: API.CourseData;
+  }>('/api/myCourses', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    withCredentials: true,
+  });
+}
+
+export async function updateCourse(data: API.CourseData) {
+  return request<API.CourseData>('/api/updateCourse', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data,
+    withCredentials: true,
+  });
+}
+
+export async function deleteCourse(ID: number) {
+  return request(`/api/deleteCourse`, {
+    method: 'POST',
+    data:ID,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    withCredentials: true,
+  });
+}
+
+export async function fetchCourses() {
+  return request<API.CourseData[]>('/api/courses', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    withCredentials: true,
+  });
+}

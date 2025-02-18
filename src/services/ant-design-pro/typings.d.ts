@@ -136,5 +136,24 @@ declare namespace API {
     data: ClassData[];
   }
 
+  type CourseInfo = {
+    name: string;
+    credit: number;
+  };
 
+  type CourseApplication = {
+    CID: string;
+    TID: string;
+    TimeSlot: string;
+    Capacity: number;
+  };
+
+  type CourseData = {
+    ID: number;
+    CID: string;
+    name: string;
+    TimeSlot: string;
+    Capacity: number;
+    isApproved: boolean;
+  };
 }

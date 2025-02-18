@@ -27,8 +27,8 @@ const Approval: React.FC = () => {
     },
     {
       title: '课程名称',
-      dataIndex: 'name',
-      key: 'name',
+      dataIndex: 'CName',
+      key: 'CName',
     },
     {
       title: '教师号',
@@ -37,8 +37,8 @@ const Approval: React.FC = () => {
     },
     {
       title: '教师名称',
-      dataIndex: 'teacherName',
-      key: 'teacherName',
+      dataIndex: 'TName',
+      key: 'TName',
     },
     {
       title: '上课时间',
@@ -52,14 +52,14 @@ const Approval: React.FC = () => {
     },
     {
       title: '绩点',
-      dataIndex: 'gpa',
-      key: 'gpa',
+      dataIndex: 'Credits',
+      key: 'Credits',
     },
     {
       title: '操作',
       key: 'action',
       render: (_: any, record: any) => (
-        <Button type="primary" onClick={() => handleApprove(record.id)}>
+        <Button type="primary" onClick={() => handleApprove(record.ID)}>
           批准
         </Button>
       ),
@@ -73,9 +73,19 @@ const Approval: React.FC = () => {
       rowKey="id"
       request={async () => {
         const response = await fetchAwaitingApprovalClasses();
+        const data = Array.isArray(response.data) ? response.data : [];
         return {
-          data: Array.isArray(response) ? response : [],
-          success: true,
+          data: data.map((row: any) => ({
+            ID: row.ID,
+            CID: row.CID,
+            CName: row.name,
+            TID: row.TID,
+            TName: row.TName,
+            TimeSlot: row.TimeSlot,
+            Capacity: row.Capacity,
+            Credits: row.Credits,
+          })),
+          success: response.success,
         };
       }}
       columns={columns}
