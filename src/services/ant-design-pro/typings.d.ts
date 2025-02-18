@@ -5,25 +5,6 @@ declare namespace API {
     access?: string[];
   };
 
-  type ErrorResponse = {
-    /** 业务约定的错误码 */
-    errorCode: string;
-    /** 业务上的错误信息 */
-    errorMessage?: string;
-    /** 业务上的请求是否成功 */
-    success?: boolean;
-  };
-
-  type FakeCaptcha = {
-    code?: number;
-    status?: string;
-  };
-
-  type getFakeCaptchaParams = {
-    /** 手机号 */
-    phone?: string;
-  };
-
   type LoginParams = {
     id?: string;
     password?: string;
@@ -169,5 +150,25 @@ declare namespace API {
     CourseName: string;
     Credits: number;
     DName: string;
+  };
+
+  type gradeUpdateRes = {
+    success: boolean;
+    message?: string;
+  };
+
+  type Student = {
+    SNO: string;
+    SName: string;
+    Gender: string;
+    GPA: number;
+    Admission: number;
+    Major: string;
+  };
+
+  type studentQueryResponse = {
+    success: boolean;
+    message: string;
+    data: Student[];
   };
 }

@@ -226,3 +226,27 @@ export async function updateLesson(data: API.Lesson) {
     withCredentials: true,
   });
 }
+
+
+/** 查询课程的所有学生 GET /api/queryStudents */
+export async function queryStudents(cid: string) {
+  return request<API.studentQueryResponse>('/api/queryStudents', {
+    method: 'GET',
+    params:{
+      "CID" : cid
+    },
+    withCredentials: true,
+  });
+}
+
+/** 更新学生成绩 POST /api/updateGrades */
+export async function updateGrades(SNO: string) {
+  return request<API.gradeUpdateRes>('/api/updateGrades', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    SNO,
+    withCredentials: true,
+  });
+}

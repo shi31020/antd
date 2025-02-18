@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Form, Input, Modal, Row, Col, Typography, Table, Space, Popconfirm, message } from 'antd';
-import { useModel } from '@umijs/max';
+import { useModel, history } from '@umijs/max'; // 添加 history 导入
 import { getCourseInfo, submitCourseApplication, fetchMyCourses, updateCourse, deleteCourse } from '@/services/ant-design-pro/api';
 
 const { Text } = Typography;
@@ -106,6 +106,13 @@ const CourseManagement = () => {
     }
   };
 
+  const handleViewCourse = (course: API.CourseData) => {
+    // 保存课程信息到 localStorage 或者其他状态管理
+    localStorage.setItem('currentCourse', JSON.stringify(course));
+    // 跳转到 Marking 页面
+    history.push('/marking');
+  };
+
   const columns = [
     {
       title: '课程号',
@@ -150,6 +157,12 @@ const CourseManagement = () => {
             }}
           >
             修改
+          </Button>
+          <Button
+            type="default"
+            onClick={() => handleViewCourse(record)}
+          >
+            查看
           </Button>
           <Popconfirm
             title="确定删除该课程吗？"

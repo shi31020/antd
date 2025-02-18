@@ -61,9 +61,8 @@ export default [
   },
   {
     path: '/marking',
-    name: '成绩登录与学生查询',
-    access: 'canTeacher',
-    component: './Teachers/Marking',
+    component: '@/pages/Teachers/Marking',
+    menu: false, // 不可见
   },
   {
     path: '/admin',
@@ -99,12 +98,6 @@ export default [
         component: './Admin/Register',
       },
     ],
-  },
-  {
-    name: 'list.table-list',
-    icon: 'table',
-    path: '/list',
-    component: './TableList',
   },
   {
     path: '*',
