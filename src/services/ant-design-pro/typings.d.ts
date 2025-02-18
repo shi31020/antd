@@ -156,4 +156,18 @@ declare namespace API {
     Capacity: number;
     isApproved: boolean;
   };
+
+  type LessonQueryParams = {
+    CID?: string;
+    CourseName?: string;
+    OfferingDepartment?: string;
+    Credits?: number;
+  };
+
+  type Lesson = {
+    CID: string;
+    CourseName: string;
+    Credits: number;
+    DName: string;
+  };
 }

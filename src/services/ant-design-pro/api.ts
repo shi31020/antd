@@ -205,3 +205,24 @@ export async function fetchCourses() {
     withCredentials: true,
   });
 }
+
+/** 查询课程信息 POST /api/queryLessons */
+export async function queryLessons(params: API.LessonQueryParams) {
+  return request<API.Lesson[]>('/api/queryLessons', {
+    method: 'POST',
+    data: params,
+    withCredentials: true,
+  });
+}
+
+/** 更新课程信息 POST /api/updateLesson */
+export async function updateLesson(data: API.Lesson) {
+  return request<API.Lesson>('/api/updateLesson', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data,
+    withCredentials: true,
+  });
+}
