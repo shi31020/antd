@@ -164,8 +164,8 @@ export async function submitCourseApplication(data: API.CourseApplication) {
 export async function fetchMyCourses() {
   return request<{
     success: boolean;
-    data: API.CourseData;
-  }>('/api/myCourses', {
+    data: API.CourseData[];
+  }>('/api/myClasses', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -186,9 +186,9 @@ export async function updateCourse(data: API.CourseData) {
 }
 
 export async function deleteCourse(ID: number) {
-  return request(`/api/deleteCourse`, {
+  return request('/api/deleteCourse', {
     method: 'POST',
-    data:ID,
+    data: { ID },
     headers: {
       'Content-Type': 'application/json',
     },
@@ -255,5 +255,16 @@ export async function selectCourse(params: { CID: string, ID:string }) {
   return request('/api/select_course', {
     method: 'POST',
     data: params,
+  });
+}
+
+export async function deleteClass(ID: number) {
+  return request('/api/deleteClass', {
+    method: 'POST',
+    data: { ID },
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    withCredentials: true,
   });
 }
