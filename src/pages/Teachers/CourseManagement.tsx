@@ -207,7 +207,7 @@ const CourseManagement = () => {
               </Form.Item>
             </Col>
             <Col span={8}>
-              <Form.Item label="绩点">
+              <Form.Item label="学分">
                 <Text>{courseInfo.credit}</Text>
               </Form.Item>
             </Col>

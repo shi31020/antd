@@ -169,6 +169,7 @@ declare namespace API {
     GPA: number;
     Admission: number;
     Major: string;
+    Grade: number;
   };
 
   type studentQueryResponse = {

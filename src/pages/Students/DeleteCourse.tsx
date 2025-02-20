@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Popconfirm, message } from 'antd';
 import { ProTable } from '@ant-design/pro-components';
-import { fetchMyCourses, deleteClass } from '@/services/ant-design-pro/api';
+import { fetchClasses, deleteClass } from '@/services/ant-design-pro/api';
 
 const handleDeleteClass = async (ID: number, fetchCourses: () => void) => {
   try {
@@ -18,7 +18,7 @@ const handleDeleteClass = async (ID: number, fetchCourses: () => void) => {
   }
 };
 
-const columns = (fetchCourses: () => void) => [
+const columns = (fetchClasses: () => void) => [
   { title: '课程号', dataIndex: 'CID', key: 'CID' },
   { title: '课程名称', dataIndex: 'CourseName', key: 'CourseName' },
   { title: '教师号', dataIndex: 'TID', key: 'TID' },
@@ -31,7 +31,7 @@ const columns = (fetchCourses: () => void) => [
     render: (text: any, record: any) => (
       <Popconfirm
         title="确定删除这门课程吗？"
-        onConfirm={() => handleDeleteClass(record.ID, fetchCourses)}
+        onConfirm={() => handleDeleteClass(record.ID, fetchClasses)}
         okText="确定"
         cancelText="取消"
       >
@@ -47,7 +47,7 @@ export default () => {
 
   const fetchCourses = async () => {
     try {
-      const response = await fetchMyCourses();
+      const response = await fetchClasses();
       if (response.success) {
         setDataSource(response.data);
         message.info('加载课程完成');

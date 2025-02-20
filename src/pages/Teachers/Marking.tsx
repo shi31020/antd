@@ -93,6 +93,11 @@ const Marking = () => {
         />
       ),
     },
+    {
+      title: '绩点',
+      dataIndex: 'Grade',
+      key: 'Major',
+    },
   ];
 
   return (

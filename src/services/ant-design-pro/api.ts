@@ -294,3 +294,13 @@ export async function checkScheme() {
     withCredentials: true,
   });
 }
+
+export async function fetchClasses() {
+  return request('/api/myClasses', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    withCredentials: true,
+  });
+}
